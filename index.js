@@ -1,4 +1,5 @@
 const { createCanvas, loadImage, Image } = require('canvas')
+const path = require('path')
 const inventorySlots = require('./inventorySlots')
 
 for (let i = 36 + 1; i <= 44; i++) {
@@ -24,7 +25,7 @@ for (let i = 27 + 1; i <= 35; i++) {
 async function makeImage (inventory) {
   const canvas = createCanvas(352, 332)
   const ctx = canvas.getContext('2d')
-  const image = await loadImage('./PackInventoryWindow.png')
+  const image = await loadImage(path.join(__dirname, 'PackInventoryWindow.png'))
   ctx.drawImage(image, 0, 0, 352, 332)
   for (const item in inventory) {
     if (inventory[item]?.slot) {
